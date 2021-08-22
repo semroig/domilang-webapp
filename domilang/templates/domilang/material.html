@@ -1,0 +1,23 @@
+{% extends "domilang/layout.html" %}
+
+{% block body %}
+
+    <h2>This is your study material!</h2>
+
+    <div class="row">
+        {% for module in modules %}
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ module.title }}</h5>
+              <p class="card-text">{{ module.description }}</p>
+              <a href="{% url 'domilang:module' module.id %}" class="btn btn-primary">Study now!</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {{ message }}
+
+{% endblock %}

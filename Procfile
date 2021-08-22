@@ -1,0 +1,1 @@
+web: gunicorn ProjectJuani.wsgi --log-file -
