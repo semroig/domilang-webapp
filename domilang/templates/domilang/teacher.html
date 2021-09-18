@@ -1,0 +1,111 @@
+{% extends "domilang/layout.html" %}
+{% load static%}
+
+{% block body %}
+
+	<div class="container-fluid mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<div class="card">
+					<div class="card-body">
+						<div class="row justify-content-between align-items-center">
+							<div class="col-md-2">
+								<img class="foto-perfil" src="{{ user.foto.url }}" alt="Your pic" width="65">
+							</div>
+							<div class="col-md-5">
+								<h2 class="display-3" style="font-weight: 700; color: #003a78;">{{ user.first_name }} {{ user.last_name }}</h2>
+								<p class="texto">
+									English Lessons from Beginner to Proficiency - 
+									Certified TEFL Tutor, Great with KIDS, BUSINESS Background.
+								</p>
+							</div>
+							<div class="col-md-3">
+								<p>
+									<span style="font-weight: 500; color: #003a78;">Native Language:</span> Spanish
+								</p>
+								<p>
+									<span style="font-weight: 500; color: #003a78;">Other Languages:</span> English
+								</p>
+										
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-md-7">
+				<div class="card text-center">
+					<div class="card-body m-3">
+						<div class="row mb-4">
+							<div class="col-md-3">
+								<h3>Schedule</h3>
+							</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="table-responsive">
+								<div>
+									<table class="table align-items-center">
+										<thead class="thead-light">
+											<tr>
+												{% for day in days %}
+													<th scope="col" class="sort" data-sort="name">{{ day }}</th>
+												{% endfor %}
+											</tr>
+										</thead>
+										<tbody class="list">
+												{% for period in periods %}
+													<tr>
+														{% for day in days %}
+															<td>
+																	<span class="badge badge-dot">
+																		<i class="bg-warning"></i>
+																		<span class="status">{{ period }}</span>
+																	</span>
+															</td>
+														{% endfor %}											
+													</tr>
+												{% endfor %}
+
+												
+										</tbody>
+									</table>
+								</div>		
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+						This is some text within a card body.<br>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+{% endblock %}

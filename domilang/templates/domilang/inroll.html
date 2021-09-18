@@ -7,32 +7,19 @@
 
     {{ message }}
 
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Spanish</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">English</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Portuguese</button>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" style="display: flex;">
-          {% for profe in profes %}
-            <div class="card" style="width: 15rem;">
-              <img src="{{ profe.foto }}" class="card-img-top" alt="portrait">
-              <div class="card-body">
-                <h5 class="card-title">{{ profe.first_name }} {{ profe.last_name }}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Arrange a class!</a>
-              </div>
+    <div class="container-fluid">
+      <div class="row">
+        {% for profe in profes %}
+          <div class="card" style="width: 15rem;">
+            <img src="{{ profe.foto.url }}" class="card-img-top" alt="portrait">
+            <div class="card-body">
+              <h5 class="card-title">{{ profe.first_name }} {{ profe.last_name }}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Arrange a class!</a>
             </div>
-          {% endfor %}
-        </div>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Sorry, no techers available for this language now</div>
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Sorry, no techers available for this language now</div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
 
 {% endblock %}

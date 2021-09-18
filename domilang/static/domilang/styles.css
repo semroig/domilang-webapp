@@ -1,10 +1,5 @@
 html,body {
-  height: 100%;
-  background-color: #d3f0fd;
-}
-
-.all_body {
-    padding: 30px;
+  background-color: #eef9fc;
 }
 
 input {
@@ -41,7 +36,8 @@ select {
 }
 
 #hero_img {
-    width: 90%;
+    width: 100%;
+    padding-left: 4rem;
 }
 
 #sticky-footer {
@@ -49,6 +45,55 @@ select {
 }
 
 #description {
-    color: black;
-    font-size: 1.3rem;
+    color: #333333;
+    font-size: 1.4rem;
+    line-height:30pt;
+}
+
+.titulo {
+    line-height:40pt;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.texto {
+    font-size: 1.1rem;
+    color: #333333;
+}
+
+::selection {
+    background: #efc026;
+}
+
+#boton {
+    font-size:1.1rem;
+    color:#333333;
+    border-radius: 2rem;
+    border-color:#efc026;
+    font-weight:bold;
+    background:#efc026;
+}
+
+#boton:hover {
+    background: #ffb703;
+}
+
+#boton2 {
+    color:#333333;
+    border-color:#333333;
+}
+
+#boton2:hover {
+    background: #efc026;
+}
+
+#boton3 {
+    color:#333333;
+    border-color:#efc026;
+    background:#efc026;
+}
+
+#boton3:hover {
+    background: #ffb703;
 }

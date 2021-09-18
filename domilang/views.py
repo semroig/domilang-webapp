@@ -11,10 +11,13 @@ from .forms import LogInForm
 from .forms import RegisterForm
 from .forms import ProfileForm
 
+from django.core.mail import send_mail
+
+
 # Create your views here.
 
 def index(request):
-    return render(request, "domilang/index.html")  
+    return render(request, "domilang/index2.html")  
 
 def login_view(request):
     if request.method == "POST":
@@ -36,7 +39,30 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("domilang:index"))
 
 def profile(request):
-    return render(request, "domilang/profile.html",)
+    return render(request, "domilang/profile.html")
+
+def teacher(request):
+    periods = [
+        '09:00',
+        '10:00',
+        '11:00',
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00'
+    ]
+    days = [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+    ]
+    return render(request, "domilang/teacher.html",{
+        "days": days,
+        "periods": periods
+    })
 
 def home(request):
     if not request.user.is_authenticated:
@@ -59,6 +85,14 @@ def register(request):
         try:
             user = User.objects.create_user(username, email, password)
             user.save()
+
+            send_mail(
+                'Welcome to Domilang!',
+                'Hi new user! We are happy for your registration. Start paying us dollars please.',
+                'admin@domilang.com',
+                [email],
+                fail_silently=False,
+            )
         except IntegrityError:
             return render(request, "domilang/register.html", {
                 "message": "Username already taken."

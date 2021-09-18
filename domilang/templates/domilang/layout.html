@@ -43,7 +43,7 @@
         <nav class="navbar sticky-top navbar-expand-md navbar-light px-7" style="background-color: white;">
             <!-- Navbar content -->
             <div class="container-fluid w-100">
-                <a class="navbar-brand" href="{% url 'domilang:index' %}">
+                <a class="navbar-brand mx-5" href="{% url 'domilang:index' %}">
                     <img src="{% static 'domilang/images/logo.png' %}" alt="" width="" height="34" class="d-inline-block align-text-top">
                 </a>
                 <a class="nav-link active" aria-current="page" href="{% url 'domilang:home' %}">
@@ -57,9 +57,6 @@
                 </a>
                 <a class="nav-link active" aria-current="page" href="{% url 'domilang:home' %}">
                   Resources
-                </a>
-                <a class="nav-link active" aria-current="page" href="{% url 'domilang:home' %}">
-                  Company
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -101,8 +98,8 @@
                             </ul>
                         </div>
                       {% else %}
-                        <a class="btn btn-outline-success" href="{% url 'domilang:login' %}">Log In</a>
-                        <a class="btn btn-success" href="{% url 'domilang:register' %}">Sign Up</a>
+                        <a class="btn btn-outline-success" href="{% url 'domilang:login' %}" id="boton2">Log In</a>
+                        <a class="btn btn-success" href="{% url 'domilang:register' %}" id="boton3">Sign Up</a>
                       {% endif %}
                     </div>
                 </div>
