@@ -58,10 +58,21 @@
 													<tr>
 														{% for day in days %}
 															<td>
-																	<span class="badge badge-dot">
-																		<i class="bg-warning"></i>
-																		<span class="status">{{ period }}</span>
-																	</span>
+																
+																<span class="badge badge-dot">
+																	{% with strin=True %}
+																	{% for ava in available %}
+																		{% if period == ava.period and day == ava.day %}
+																			<i class="bg-success"></i>
+
+																		{% else %}
+																			<i class="bg-warning"></i>
+																		{% endif %}
+																	{% endfor %}
+																	{% endwith %}
+																	<span class="status">{{ period }}</span>
+																</span>
+																
 															</td>
 														{% endfor %}											
 													</tr>
@@ -79,28 +90,9 @@
 			<div class="col-md-3">
 				<div class="card">
 					<div class="card-body">
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
-						This is some text within a card body.<br>
+						{% for ava in debug %}
+							{{ ava }}<br>
+						{% endfor %}
 					</div>
 				</div>
 			</div>

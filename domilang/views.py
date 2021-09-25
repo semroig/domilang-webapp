@@ -43,7 +43,7 @@ def profile(request):
 
 def teacher(request):
     periods = [
-        '09:00',
+        '9:00',
         '10:00',
         '11:00',
         '12:00',
@@ -59,9 +59,19 @@ def teacher(request):
         'Friday',
         'Saturday'
     ]
+    debug = [
+        True,
+        False,
+        True,
+        True
+    ]
+    usuario = request.user
+    available = usuario.available.all()
     return render(request, "domilang/teacher.html",{
         "days": days,
-        "periods": periods
+        "periods": periods,
+        "available": available,
+        "debug": available
     })
 
 def home(request):
@@ -90,8 +100,8 @@ def register(request):
                 'Welcome to Domilang!',
                 'Hi new user! We are happy for your registration. Start paying us dollars please.',
                 'admin@domilang.com',
-                [email],
-                fail_silently=False,
+                ['sem.roig@gmail.com']
+                #fail_silently=False,
             )
         except IntegrityError:
             return render(request, "domilang/register.html", {
