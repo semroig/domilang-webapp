@@ -20,6 +20,7 @@ class User(AbstractUser):
     study_lan = models.CharField(max_length=24, default='none')
     phone = models.CharField(max_length=24, default='none')
     role = models.CharField(max_length=12, default='none')
+    bio = models.CharField(max_length=1024, default='none')
 
     available = models.ManyToManyField(Periods, related_name='taught_by', blank=True)
 

@@ -3,7 +3,7 @@
 
 {% block body %}
 
-	<div class="container-fluid mt-5">
+	<div class="container-fluid my-6">
 		<div class="row justify-content-center">
 			<div class="col-md-10">
 				<div class="card">
@@ -44,44 +44,82 @@
 						</div>
 						<div class="row justify-content-center">
 							<div class="table-responsive">
-								<div>
-									<table class="table align-items-center">
-										<thead class="thead-light">
+								<table class="table align-items-center">
+									<thead class="thead-light">
+										<tr>
+											{% for day in days %}
+												<th scope="col" class="sort" data-sort="name">{{ day }}</th>
+											{% endfor %}
+										</tr>
+									</thead>
+									<tbody class="list">
+										{% for period in periods %}
 											<tr>
-												{% for day in days %}
-													<th scope="col" class="sort" data-sort="name">{{ day }}</th>
-												{% endfor %}
+												<td>
+													<span class="badge badge-dot">
+														{% if period in listix.monday %}
+															<i class="bg-success"></i>
+														{% else %}
+															<i class="bg-warning"></i>
+														{% endif %}
+														<span class="status">{{ period }}</span>
+													</span>
+												</td>
+												<td>
+													<span class="badge badge-dot">
+														{% if period in listix.tuesday %}
+															<i class="bg-success"></i>
+														{% else %}
+															<i class="bg-warning"></i>
+														{% endif %}
+														<span class="status">{{ period }}</span>
+													</span>
+												</td>
+												<td>
+													<span class="badge badge-dot">
+														{% if period in listix.wednesday %}
+															<i class="bg-success"></i>
+														{% else %}
+															<i class="bg-warning"></i>
+														{% endif %}
+														<span class="status">{{ period }}</span>
+													</span>
+												</td>
+												<td>
+													<span class="badge badge-dot">
+														{% if period in listix.thursday %}
+															<i class="bg-success"></i>
+														{% else %}
+															<i class="bg-warning"></i>
+														{% endif %}
+														<span class="status">{{ period }}</span>
+													</span>
+												</td>
+												<td>
+													<span class="badge badge-dot">
+														{% if period in listix.friday %}
+															<i class="bg-success"></i>
+														{% else %}
+															<i class="bg-warning"></i>
+														{% endif %}
+														<span class="status">{{ period }}</span>
+													</span>
+												</td>
+												<td>
+													<span class="badge badge-dot">
+														{% if period in listix.saturday %}
+															<i class="bg-success"></i>
+														{% else %}
+															<i class="bg-warning"></i>
+														{% endif %}
+														<span class="status">{{ period }}</span>
+													</span>
+												</td>							
 											</tr>
-										</thead>
-										<tbody class="list">
-												{% for period in periods %}
-													<tr>
-														{% for day in days %}
-															<td>
-																
-																<span class="badge badge-dot">
-																	{% with strin=True %}
-																	{% for ava in available %}
-																		{% if period == ava.period and day == ava.day %}
-																			<i class="bg-success"></i>
+										{% endfor %}
 
-																		{% else %}
-																			<i class="bg-warning"></i>
-																		{% endif %}
-																	{% endfor %}
-																	{% endwith %}
-																	<span class="status">{{ period }}</span>
-																</span>
-																
-															</td>
-														{% endfor %}											
-													</tr>
-												{% endfor %}
-
-												
-										</tbody>
-									</table>
-								</div>		
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>

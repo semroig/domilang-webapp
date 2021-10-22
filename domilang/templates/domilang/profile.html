@@ -2,54 +2,73 @@
 
 {% block body %}
 
-    <h2>Welcome to your profile!</h2>
+	<a href="{% url 'domilang:edit' %}">Edit Profile</a>
 
-    <div class="col-md-6 col-xs-12">
-        {% if user.is_authenticated %}
-            <img src="{{ user.foto.url }}" alt="Your pic" width="200" class="foto-perfil">
-            <p>Your first name is <strong>{{ user.first_name }}</strong>.</p>
-            <p>Your last name is <strong>{{ user.last_name }}</strong>.</p>
-            <p>Your email is <strong>{{ user.email }}</strong>.</p>
-            <p>Your native language is <strong>{{ user.native_lan }}</strong>.</p>
-            <p>Your picture url is <strong>{{ user.foto }}</strong>.</p>
-            <p>Your country is <strong>{{ user.pais }}</strong>.</p>
-            <p>Your time zone is <strong>{{ user.franja }}</strong>.</p>
-            <p>Your level is <strong>{{ user.nivel }}</strong>.</p>
-            <p>Your study language is <strong>{{ user.study_lan }}</strong>.</p>
-            <p>Your phone is <strong>{{ user.phone }}</strong>.</p>
-        {% else %}
-            Not signed in.
-        {% endif %}
-    </div>
+	<hr>
 
-    <a href="{% url 'domilang:edit' %}">Edit Profile</a>
-
-    <hr>
-
-    <div class="row justify-content-center">
-        <div class="col-md-7">
-            <div class="card text-center">
-                <div class="card-body">
-                    <img class="foto-perfil" src="{{ user.foto.url }}" alt="Your pic" width="65">
-                    
-                    <strong>{{ user.first_name }} {{ user.last_name }}</strong>
-                    <br>
-                    {{ user.study_lan }} learner.
-                    <br>
-                    <small>{{ user.pais }}</small>
-                   
-                    
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                  This is some text within a card body.
-                </div>
-            </div>
-        </div>
-    </div>
-    
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-md-7">
+				<div class="card ">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<div class="col-md-4 text-center">
+								<img class="foto-perfil" src="{{ user.foto.url }}" alt="Your pic" width="65">
+							</div>
+							<div class="col-md-8 text-left">
+								<h2 class="display-3" style="font-weight: 600; color: #003a78;">{{ user.first_name }} {{ user.last_name }}</h2>
+								<a style="font-size: 1.3rem; color: #333333;">{{ user.study_lan }} learner from {{ user.pais }}</a>
+							</div>
+						</div>
+						<div class="row justify-content-center mt-4">
+							<div class="col-md-10">
+								{{ user.bio }}
+							</div>
+						</div>
+							
+					</div>
+				</div>
+				<div class="card ">
+					<div class="card-body">
+						<a style="font-size: 1.4rem; color: #333333;">My account information</a>
+						<div class="row align-items-center mt-4">
+							<div class="col-md-6 text-left">
+								<div>
+									<a style="font-size: 1.2rem; color: #333333; font-weight:540;">Email</a>
+									<br>
+									<a style="font-size: 1.2rem; color: #333333;">{{ user.email }}</a>
+								</div>
+								<div class="mt-2">
+									<a style="font-size: 1.2rem; color: #333333; font-weight:540;">Native language</a>
+									<br>
+									<a style="font-size: 1.2rem; color: #333333;">{{ user.native_lan }}</a>
+								</div>
+							</div>
+							<div class="col-md-6 text-left">
+								<div>
+									<a style="font-size: 1.2rem; color: #333333; font-weight:540;">Level of {{ user.study_lan }}</a>
+									<br>
+									<a style="font-size: 1.2rem; color: #333333;">{{ user.nivel }}</a>
+								</div>
+								<div class="mt-2">
+									<a style="font-size: 1.2rem; color: #333333; font-weight:540;">Phone</a>
+									<br>
+									<a style="font-size: 1.2rem; color: #333333;">{{ user.phone }}</a>
+								</div>
+							</div>
+						</div>
+							
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+					<div class="card">
+							<div class="card-body">
+								<a style="font-size: 1.4rem; color: #333333;">My stats!</a>
+							</div>
+					</div>
+			</div>
+		</div>
+	</div>
 
 {% endblock %}

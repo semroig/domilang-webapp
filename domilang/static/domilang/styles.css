@@ -1,5 +1,5 @@
 html,body {
-  background-color: #eef9fc;
+  background-color: #eff2f5;
 }
 
 input {
@@ -96,4 +96,9 @@ select {
 
 #boton3:hover {
     background: #ffb703;
+}
+
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
 }

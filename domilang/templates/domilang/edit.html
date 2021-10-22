@@ -2,13 +2,107 @@
 
 {% block body %}
 
-    <h2>Edit your profile</h2>
-    <form enctype="multipart/form-data" method="post">
-        {% csrf_token %}
-
-        {{ form }}
-
-        <input type="submit">
-    </form>
+	<form enctype="multipart/form-data" action="{% url 'domilang:edit' %}" method="post">
+		{% csrf_token %}
+		<div class="container-fluid mt-5">
+			<div class="row justify-content-center">
+				<div class="col-md-7">
+					<div class="card ">
+						<div class="card-body">
+							<a style="font-size: 1.4rem; color: #333333;">About me</a>
+								<div class="row align-items-center mt-4">
+									<div class="col-md-4 text-left">
+										<div class="mb-3">
+											<label for="exampleFormControlInput1" class="form-label">First and middle name</label>
+											<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Thomas Spenser" name="first_name">
+										</div>
+										<div class="mb-3">
+											<label for="exampleFormControlInput1" class="form-label">Last name</label>
+											<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Monson" name="last_name">
+										</div>
+									</div>
+									<div class="col-md-8 text-left">
+										<div class="mb-3">
+											<label for="exampleFormControlTextarea1" class="form-label">My short bio</label>
+											<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="bio"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="row align-items-center mt-4">
+									<div class="col-md-4 text-left">
+										<div class="mb-3">
+											<label for="exampleFormControlInput1" class="form-label">Country</label>
+											<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="United States of America" name="pais">
+										</div>
+									</div>
+									<div class="col-md-8 text-left mb-3">
+										<div class="custom-file">
+											<label class="form-label">Select picture</label>
+											<input type="file" class="custom-file-input" id="customFileLang" lang="en">
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+					<div class="card ">
+						<div class="card-body">
+							<a style="font-size: 1.4rem; color: #333333;">My account information</a>
+								<div class="row align-items-center mt-4">
+									<div class="col-md-6 text-left">
+										<div class="mb-3">
+											<label for="exampleFormControlInput1" class="form-label">Email address</label>
+											<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+										</div>
+										<div class="mb-3">
+											<label for="exampleFormControlInput1" class="form-label">Native language</label>
+											<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="English" name="native_lan">
+										</div>
+									</div>
+									<div class="col-md-6 text-left">
+										<div class="mb-3">
+											<label class="form-label">Level of spanish</label>
+											<div class="custom-control custom-radio mb-2">
+												<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+												<label class="custom-control-label" for="customRadio1">Elementary</label>
+											</div>
+											<div class="custom-control custom-radio mb-2">
+												<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+												<label class="custom-control-label" for="customRadio2">Intermediate</label>
+											</div>
+											<div class="custom-control custom-radio">
+												<input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+												<label class="custom-control-label" for="customRadio3">Advanced</label>
+											</div>
+										</div>
+										<div class="mb-3">
+											<label for="exampleFormControlInput1" class="form-label">Phone</label>
+											<input type="tel" class="form-control" id="exampleFormControlInput1" placeholder="+5491149360562" name="phone">
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+						<div class="card">
+								<div class="card-body">
+									some body some body some body some body<br>
+									some body some body some body some body<br>
+									some body some body some body some body<br>
+									some body some body some body some body<br>
+									some body some body some body some body<br>
+								</div>
+						</div>
+				</div>
+			</div>
+			<div class="row justify-content-center my-3">
+				<div class="col-md-2">
+					<button class="w-100 btn btn-primary" id="boton" type="submit">Save changes</button>
+				</div>
+			</div>
+			
+		</div>
+	</form>
+		
 
 {% endblock %}

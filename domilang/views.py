@@ -43,7 +43,6 @@ def profile(request):
 
 def teacher(request):
     periods = [
-        '9:00',
         '10:00',
         '11:00',
         '12:00',
@@ -67,11 +66,34 @@ def teacher(request):
     ]
     usuario = request.user
     available = usuario.available.all()
+
+    listix = {}
+
+    listix['monday'] = []
+    listix['tuesday'] = []
+    listix['wednesday'] = []
+    listix['thursday'] = []
+    listix['friday'] = []
+    listix['saturday'] = []
+    for ava in available:
+        if ava.day == 'Monday':
+            listix['monday'].append(ava.period)
+        if ava.day == 'Tuesday':
+            listix['tuesday'].append(ava.period)
+        if ava.day == 'Wednesday':
+            listix['wednesday'].append(ava.period)
+        if ava.day == 'Thursday':
+            listix['thursday'].append(ava.period)
+        if ava.day == 'Friday':
+            listix['friday'].append(ava.period)
+        if ava.day == 'Saturday':
+            listix['saturday'].append(ava.period)
+
     return render(request, "domilang/teacher.html",{
         "days": days,
         "periods": periods,
         "available": available,
-        "debug": available
+        "listix": listix
     })
 
 def home(request):
@@ -100,8 +122,7 @@ def register(request):
                 'Welcome to Domilang!',
                 'Hi new user! We are happy for your registration. Start paying us dollars please.',
                 'admin@domilang.com',
-                ['sem.roig@gmail.com']
-                #fail_silently=False,
+                [email]
             )
         except IntegrityError:
             return render(request, "domilang/register.html", {
@@ -114,51 +135,23 @@ def register(request):
 
 def edit(request):
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
-            language = form.cleaned_data['native_lan']
-            
-            pais = form.cleaned_data['pais']
-            franja = form.cleaned_data['franja']
-            nivel = form.cleaned_data['nivel']
-            study_lan = form.cleaned_data['study_lan']
-            phone = form.cleaned_data['phone']
-            if form.cleaned_data['foto']:
-                foto = form.cleaned_data['foto']
-                request.user.foto = foto
+        # form = ProfileForm(request.POST, request.FILES)
+        if 'foto' in request.POST:
+            request.user.foto = request.POST['foto']
 
-            request.user.first_name = first_name
-            request.user.last_name = last_name
-            request.user.native_lan = language
-            
-            request.user.pais = pais
-            request.user.franja = franja
-            request.user.nivel = nivel
-            request.user.study_lan = study_lan
-            request.user.phone = phone
-            request.user.save()
+        request.user.first_name = request.POST['first_name']
+        request.user.last_name = request.POST['last_name']
+        request.user.native_lan = request.POST['native_lan']
+        request.user.pais = request.POST['pais']
+        request.user.email = request.POST['email']
+        request.user.phone = request.POST['phone']
+        request.user.bio = request.POST['bio']
+        #request.user.nivel = request.POST['customRadio']
+        request.user.save()
 
-            return render(request, "domilang/profile.html")
-        else:
-            return render(request, "domilang/edit.html",{
-                "form": form
-            })
+        return render(request, "domilang/profile.html")
     else:
-        return render(request, "domilang/edit.html",{
-            "form": ProfileForm(initial={
-                'first_name': request.user.first_name,
-                'last_name': request.user.last_name,
-                'native_lan': request.user.native_lan,
-                'foto': request.user.foto,
-                'pais': request.user.pais,
-                'franja': request.user.franja,
-                'nivel': request.user.nivel,
-                'study_lan': request.user.study_lan,
-                'phone': request.user.phone
-            })
-        })
+        return render(request, "domilang/edit.html")
 
 def inbox(request):
     return render(request, "domilang/inbox.html")
